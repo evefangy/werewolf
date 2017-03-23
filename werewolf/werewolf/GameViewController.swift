@@ -12,6 +12,10 @@ import GameplayKit
 
 class GameViewController: UIViewController {
 
+    @IBAction func PlayButton(_ sender: Any) {
+        //transfer to the next scene
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,7 +37,7 @@ class GameViewController: UIViewController {
     }
 
     override var shouldAutorotate: Bool {
-        return true
+        return false;
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {

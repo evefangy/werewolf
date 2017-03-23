@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C8A0E1E1E84454F00C805F7 /* Seer.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 1C8A0E1A1E84454F00C805F7 /* Seer.jpeg */; };
+		1C8A0E1F1E84454F00C805F7 /* Villager.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 1C8A0E1B1E84454F00C805F7 /* Villager.jpeg */; };
+		1C8A0E201E84454F00C805F7 /* Witch.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 1C8A0E1C1E84454F00C805F7 /* Witch.jpeg */; };
+		1C8A0E211E84454F00C805F7 /* Wolf.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 1C8A0E1D1E84454F00C805F7 /* Wolf.jpeg */; };
 		6F3B34431E490A1700148A57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3B34421E490A1700148A57 /* AppDelegate.swift */; };
 		6F3B34451E490A1700148A57 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6F3B34441E490A1700148A57 /* GameScene.sks */; };
 		6F3B34471E490A1700148A57 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6F3B34461E490A1700148A57 /* Actions.sks */; };
@@ -37,6 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C8A0E1A1E84454F00C805F7 /* Seer.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Seer.jpeg; path = ../../Assets/Images/Seer.jpeg; sourceTree = "<group>"; };
+		1C8A0E1B1E84454F00C805F7 /* Villager.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Villager.jpeg; path = ../../Assets/Images/Villager.jpeg; sourceTree = "<group>"; };
+		1C8A0E1C1E84454F00C805F7 /* Witch.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Witch.jpeg; path = ../../Assets/Images/Witch.jpeg; sourceTree = "<group>"; };
+		1C8A0E1D1E84454F00C805F7 /* Wolf.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Wolf.jpeg; path = ../../Assets/Images/Wolf.jpeg; sourceTree = "<group>"; };
 		6F3B343F1E490A1700148A57 /* werewolf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = werewolf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F3B34421E490A1700148A57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F3B34441E490A1700148A57 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -109,6 +117,10 @@
 				6F3B34481E490A1700148A57 /* GameScene.swift */,
 				6F3B344A1E490A1700148A57 /* GameViewController.swift */,
 				6F3B344C1E490A1700148A57 /* Main.storyboard */,
+				1C8A0E1A1E84454F00C805F7 /* Seer.jpeg */,
+				1C8A0E1B1E84454F00C805F7 /* Villager.jpeg */,
+				1C8A0E1C1E84454F00C805F7 /* Witch.jpeg */,
+				1C8A0E1D1E84454F00C805F7 /* Wolf.jpeg */,
 				6F3B344F1E490A1700148A57 /* Assets.xcassets */,
 				6F3B34511E490A1700148A57 /* LaunchScreen.storyboard */,
 				6F3B34541E490A1700148A57 /* Info.plist */,
@@ -243,7 +255,11 @@
 			files = (
 				6F3B344E1E490A1700148A57 /* Main.storyboard in Resources */,
 				6F3B34451E490A1700148A57 /* GameScene.sks in Resources */,
+				1C8A0E211E84454F00C805F7 /* Wolf.jpeg in Resources */,
+				1C8A0E1E1E84454F00C805F7 /* Seer.jpeg in Resources */,
 				6F3B34501E490A1700148A57 /* Assets.xcassets in Resources */,
+				1C8A0E1F1E84454F00C805F7 /* Villager.jpeg in Resources */,
+				1C8A0E201E84454F00C805F7 /* Witch.jpeg in Resources */,
 				6F3B34531E490A1700148A57 /* LaunchScreen.storyboard in Resources */,
 				6F3B34471E490A1700148A57 /* Actions.sks in Resources */,
 			);
@@ -515,6 +531,7 @@
 				6F3B346F1E490A1800148A57 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6F3B34701E490A1800148A57 /* Build configuration list for PBXNativeTarget "werewolfTests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +540,7 @@
 				6F3B34721E490A1800148A57 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6F3B34731E490A1800148A57 /* Build configuration list for PBXNativeTarget "werewolfUITests" */ = {
 			isa = XCConfigurationList;
@@ -531,6 +549,7 @@
 				6F3B34751E490A1800148A57 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
