@@ -11,8 +11,17 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+//    //declear public variables
+//    @IBOutlet weak var num_pla: UITextField!
+//    @IBOutlet weak var num_wof: UITextField!
+//    @IBOutlet weak var num_vil: UITextField!
+    
+    
+    //comp generated code
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
+    
+    
     
     override func didMove(to view: SKView) {
         

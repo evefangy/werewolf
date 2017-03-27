@@ -8,15 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		1C8A0E1E1E84454F00C805F7 /* Seer.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 1C8A0E1A1E84454F00C805F7 /* Seer.jpeg */; };
-		1C8A0E1F1E84454F00C805F7 /* Villager.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 1C8A0E1B1E84454F00C805F7 /* Villager.jpeg */; };
 		1C8A0E201E84454F00C805F7 /* Witch.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 1C8A0E1C1E84454F00C805F7 /* Witch.jpeg */; };
 		1C8A0E211E84454F00C805F7 /* Wolf.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 1C8A0E1D1E84454F00C805F7 /* Wolf.jpeg */; };
+		6F16395F1E885C8F0079ABC5 /* forrest.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F16395E1E885C8F0079ABC5 /* forrest.jpg */; };
+		6F1639611E886A720079ABC5 /* villager.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 6F1639601E886A720079ABC5 /* villager.jpeg */; };
+		6F1639641E88883E0079ABC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F1639621E88883E0079ABC5 /* Main.storyboard */; };
 		6F3B34431E490A1700148A57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3B34421E490A1700148A57 /* AppDelegate.swift */; };
 		6F3B34451E490A1700148A57 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6F3B34441E490A1700148A57 /* GameScene.sks */; };
 		6F3B34471E490A1700148A57 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6F3B34461E490A1700148A57 /* Actions.sks */; };
 		6F3B34491E490A1700148A57 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3B34481E490A1700148A57 /* GameScene.swift */; };
 		6F3B344B1E490A1700148A57 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3B344A1E490A1700148A57 /* GameViewController.swift */; };
-		6F3B344E1E490A1700148A57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F3B344C1E490A1700148A57 /* Main.storyboard */; };
 		6F3B34501E490A1700148A57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F3B344F1E490A1700148A57 /* Assets.xcassets */; };
 		6F3B34531E490A1700148A57 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F3B34511E490A1700148A57 /* LaunchScreen.storyboard */; };
 		6F3B345E1E490A1800148A57 /* werewolfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3B345D1E490A1800148A57 /* werewolfTests.swift */; };
@@ -42,16 +43,17 @@
 
 /* Begin PBXFileReference section */
 		1C8A0E1A1E84454F00C805F7 /* Seer.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Seer.jpeg; path = ../../Assets/Images/Seer.jpeg; sourceTree = "<group>"; };
-		1C8A0E1B1E84454F00C805F7 /* Villager.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Villager.jpeg; path = ../../Assets/Images/Villager.jpeg; sourceTree = "<group>"; };
 		1C8A0E1C1E84454F00C805F7 /* Witch.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Witch.jpeg; path = ../../Assets/Images/Witch.jpeg; sourceTree = "<group>"; };
 		1C8A0E1D1E84454F00C805F7 /* Wolf.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Wolf.jpeg; path = ../../Assets/Images/Wolf.jpeg; sourceTree = "<group>"; };
+		6F16395E1E885C8F0079ABC5 /* forrest.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = forrest.jpg; path = ../../../../Downloads/forrest.jpg; sourceTree = "<group>"; };
+		6F1639601E886A720079ABC5 /* villager.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = villager.jpeg; path = ../../images/villager.jpeg; sourceTree = "<group>"; };
+		6F1639631E88883E0079ABC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6F3B343F1E490A1700148A57 /* werewolf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = werewolf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F3B34421E490A1700148A57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F3B34441E490A1700148A57 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		6F3B34461E490A1700148A57 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		6F3B34481E490A1700148A57 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		6F3B344A1E490A1700148A57 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		6F3B344D1E490A1700148A57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6F3B344F1E490A1700148A57 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6F3B34521E490A1700148A57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6F3B34541E490A1700148A57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -116,11 +118,12 @@
 				6F3B34461E490A1700148A57 /* Actions.sks */,
 				6F3B34481E490A1700148A57 /* GameScene.swift */,
 				6F3B344A1E490A1700148A57 /* GameViewController.swift */,
-				6F3B344C1E490A1700148A57 /* Main.storyboard */,
+				6F1639621E88883E0079ABC5 /* Main.storyboard */,
 				1C8A0E1A1E84454F00C805F7 /* Seer.jpeg */,
-				1C8A0E1B1E84454F00C805F7 /* Villager.jpeg */,
 				1C8A0E1C1E84454F00C805F7 /* Witch.jpeg */,
 				1C8A0E1D1E84454F00C805F7 /* Wolf.jpeg */,
+				6F1639601E886A720079ABC5 /* villager.jpeg */,
+				6F16395E1E885C8F0079ABC5 /* forrest.jpg */,
 				6F3B344F1E490A1700148A57 /* Assets.xcassets */,
 				6F3B34511E490A1700148A57 /* LaunchScreen.storyboard */,
 				6F3B34541E490A1700148A57 /* Info.plist */,
@@ -253,12 +256,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F3B344E1E490A1700148A57 /* Main.storyboard in Resources */,
 				6F3B34451E490A1700148A57 /* GameScene.sks in Resources */,
+				6F1639641E88883E0079ABC5 /* Main.storyboard in Resources */,
 				1C8A0E211E84454F00C805F7 /* Wolf.jpeg in Resources */,
 				1C8A0E1E1E84454F00C805F7 /* Seer.jpeg in Resources */,
 				6F3B34501E490A1700148A57 /* Assets.xcassets in Resources */,
-				1C8A0E1F1E84454F00C805F7 /* Villager.jpeg in Resources */,
+				6F1639611E886A720079ABC5 /* villager.jpeg in Resources */,
+				6F16395F1E885C8F0079ABC5 /* forrest.jpg in Resources */,
 				1C8A0E201E84454F00C805F7 /* Witch.jpeg in Resources */,
 				6F3B34531E490A1700148A57 /* LaunchScreen.storyboard in Resources */,
 				6F3B34471E490A1700148A57 /* Actions.sks in Resources */,
@@ -324,10 +328,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		6F3B344C1E490A1700148A57 /* Main.storyboard */ = {
+		6F1639621E88883E0079ABC5 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6F3B344D1E490A1700148A57 /* Base */,
+				6F1639631E88883E0079ABC5 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
