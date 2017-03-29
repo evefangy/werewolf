@@ -79,27 +79,38 @@
 			
 			<div id="night_everyone" hidden="true">
         <center>
-					<div class="center">
+					<div class="center" id="night_seq">
 						IT IS NIGHT TIME. <br>EVERYONE CLOSE YOUR EYES
 					</div>
-				</center>
-      </div>
-			
-			<div id="open_eyes" hidden="true">
-        <center>
+					
 					<div class="center" ng-model="charType">
-						{{charType[curr_char].toUpperCase()}}, OPEN YOUR EYES. <br>
-					</div>
-				</center>
-      </div>
-			
-			<div id="vote" hidden="true">
-        <center>
-					<div >
+						<font hidden="true" id="char_open">{{charType[curr_char].toUpperCase()}}, OPEN YOUR EYES. <br></font>
+						
+						<!--			Wolf			-->
+						<div hidden="true" id="wolf1" class="dialogue">Choose One Target</div>
+						<div hidden="true" id="wolf2" class="dialogue">Vote To Kill</div>
+						<div hidden="true" id="wolf3">PLEASE PICK SOMEONE TO KILL</div>
+						
+						<!--			Seer			-->
+						<div hidden="true" id="seer1" class="dialogue">Find One Target</div>
+						<div hidden="true" id="seer2" class="dialogue">Vote</div>
+						<div hidden="true" id="seer3">FIND A SUSPECT</div>
+						
+						<!--			Witch			-->
+						<div hidden="true" id="witch1" class="dialogue">Find One Target</div>
+						<div hidden="true" id="witch2" class="dialogue">Vote</div>
+						<div hidden="true" id="witch3">CHOOSE AN ACTION</div>
+						
+<!--						<div hidden="true" id="vote"></div>-->
 						
 					</div>
 				</center>
       </div>
+			
+			
+				<div id="vote"></div>
+			
+
 			
       <script type="text/javascript" src="js/jquery-3.2.0.min.js"></script>
       <script type="text/javascript" src="js/angular.min.js"></script>

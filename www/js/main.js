@@ -47,6 +47,7 @@ app.controller('werewolf_ctrl', function($scope) {
   $scope.player_selection = [];
   $scope.charType = ["Villager","Werewolf","Seer","Witch"]
   $scope.curr_char = 1;
+	$scope.victim = 0;
 	
 	$scope.player_num = 1;
   
@@ -81,10 +82,16 @@ app.controller('werewolf_ctrl', function($scope) {
 		$scope.player_selection.push(3);
 		
     $scope.shuffle();
+		
+		for(var i=0;i<$scope.num_werewolf+2;i++){
+			$scope.status.push(1); //player is alive
+		}
+		
   }
   
   
   $scope.startgame = function() {
+//		createVote();
     if($scope.num_werewolf<1){
       $scope.warning = "Select at least four villagers and one werewolf";
     } else if($scope.num_villagers<4 ){
@@ -139,47 +146,168 @@ app.controller('werewolf_ctrl', function($scope) {
     },500);   
   }
   
+	
+
+	status = []; //player_selection is identity, index of the array is the player number
+	
+	function compile(element){
+		var el = angular.element(element);    
+		$scope = el.scope();
+			$injector = el.injector();
+			$injector.invoke(function($compile){
+				 $compile(el)($scope)
+			})     
+	}
+	
+	function createVote(){
+		while(document.getElementById("vote").hasChildNodes()) {
+			document.getElementById("vote").removeChild(document.getElementById("vote").lastChild);
+		}
+
+		var total_players = $scope.num_werewolf + $scope.num_villagers;
+		var num_added = 0;
+
+		for(var i=0;i<total_players/3;i++){
+			var votebox = document.createElement("center");
+			votebox.setAttribute("class","box_row");
+			for(var j=0;j<3;j++){
+				if(num_added<total_players){
+					var vote = document.createElement("div");
+					var vote_txt = document.createElement("center");
+					var x_img = document.createElement("img");
+//					var playerNumber = i*3+j+1;
+					
+					vote_txt.innerHTML = "Player " + (i*3+j+1); 
+					vote.setAttribute("id","player" + (i*3+j+1)); 
+					vote.setAttribute("class","votechar");
+					vote_txt.setAttribute("class","votechar_txt");
+//					vote.setAttribute("id",i*3+j+1)
+					var playerNumber = i*3+j+1;
+					vote.setAttribute("ng-click","vote_pend("+playerNumber+")"); 
+					
+					x_img.setAttribute("class","x");
+					x_img.setAttribute("width","90px");
+					x_img.setAttribute("src","img/x.png");
+					x_img.setAttribute("id","x"+(i*3+j+1));
+					x_img.setAttribute("style", "");
+					
+					vote.appendChild(vote_txt);
+					vote.appendChild(x_img);
+					votebox.appendChild(vote);
+					
+//					setTimeout(function(){
+//						compile(document.getElementById("player"+(i*3+j+1)));
+//					},5000);
+				}
+				num_added++;
+				
+			}
+
+			document.getElementById("vote").appendChild(votebox);
+		}
+			var confirm_btn = document.createElement("div");
+			confirm_btn.setAttribute("class","front_btn");
+			confirm_btn.innerHTML = "Confirm";
+//			confirm_btn.setAttribute("ng-click", "") different sinarios
+			
+			votebox.appendChild(confirm_btn);
+	}
+	
+	function kill(){
+		
+		status[victim] = 0;	
+	}
+	
+	
+	function showVote(playerNumber){
+		$("#x"+playerNumber).css("z-index",3);
+	}
+	
+	function hideVote(playerNumber){
+		$("#x"+playerNumber).css("z-index",-1);
+	}
+	
+	$scope.vote_pend = function(playerNumber){
+		console.log(playerNumber);
+		if ($scope.victim != playerNumber){
+			hideVote($scope.victim);
+			$scope.victim = playerNumber;
+		}
+		$scope.victim = playerNumber;
+		showVote(playerNumber);
+	}
+	
+	createVote();
+	var nums=0;
+	setTimeout(function(){
+		for(var i=0;i<($scope.num_werewolf + $scope.num_villagers);i++){
+			for(var j=0;j<3;j++){
+				if(nums<($scope.num_werewolf + $scope.num_villagers)){
+					
+					console.log("player"+(i*3+j+1));
+					compile(document.getElementById("player"+(i*3+j+1)));
+				}
+				nums++;
+			}
+		}
+		
+		
+	},2000);
+	
+//	
+	
+	
+	
+
+//	createVote();
+	
+	
   $scope.winningCondition = false;
 	$scope.currentlyPlaying = false;
   $scope.start = function() {
+		$("#main_container").fadeOut(400);
+		console.log("hello");
 		if($scope.winningCondition){
 			//show winner
 		} else {
-			if(!currentlyPlaying)
+			if(!$scope.currentlyPlaying){
 				$("#game_container").fadeOut(400);
+				$("#main_container").fadeOut(400);
+			}
 			else {
 				//fade
 			}
 			
-			
 			//night
 			setTimeout(function(){
-      	$("#night_everyone").fadeIn(400);
+      	$("#night_everyone").fadeIn(400); //start night
 						
 				setTimeout(function(){
-					$("#night_everyone").fadeOut(400);
+					$("#night_seq").fadeOut(500);
 
 					setTimeout(function(){
-						$("#open_eyes").fadeIn(400);
+						$("#char_open").fadeIn(400); //start werewolf
 						setTimeout(function(){
-						$("#open_eyes").fadeOut(400);
-									$("#open_eyes").fadeOut(400);
-							
-						},5000);
-						},5000);
-					},500);
+							$("#wolf1").fadeIn(400); //que werewolf dialogue
+							setTimeout(function(){
+								$("#wolf2").fadeIn(400); //que werewolf dialogue
+								
+								
+								setTimeout(function(){
+									$("#char_open").fadeOut(400);
+									$("#wolf1").fadeOut(400); 
+									$("#wolf2").fadeOut(400);
+									setTimeout(function(){
+										createVote();		
+										$("#vote").fadeIn(400);
+									},1000);
+													 },700);
+							},1700);
+						},1900);
+					},600); //night_everyone close
 					
-				},5000);
-				
-				
-				
-				
-			
-    	},500);
-			
-			
-			
-			
+				},2000); //night_everyone------change back
+    	},500);	
 		}
 		$scope.currentlyPlaying = true;
   }
@@ -204,7 +332,7 @@ app.controller('werewolf_ctrl', function($scope) {
     
   }
 	
-	
+
 	
 	
 	
