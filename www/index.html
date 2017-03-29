@@ -13,7 +13,7 @@
         <center><font style="font-size:50px;color:dimgrey;">WEREWOLF</font></center>
         <center><img src="img/chibi/wolfman.png" width="200px" style="margin-top:50px;margin-bottom:30px;"></center>
         <center class="front_btn" ng-click="newgame()">New Game</center>
-        <center class="front_btn">Tutorial</center>
+        <center class="front_btn" ng-click="tutorial()">Tutorial</center>
       </div>
         
       <div id="second_container" hidden="true">
@@ -60,6 +60,8 @@
             <font style="margin-bottom:20px;padding:20px;">You Are {{charType[player_selection[player_num-1]]}}</font>
             <center><img src="img/chibi/guy.png" width="150px" id="monk_img" hidden="true"></center>
             <center><img src="img/chibi/wolfman.png" width="150px" id="wolf_img" hidden="true" ></center>
+            <center><img src="img/chibi/witch.png" width="150px" id="witch_img" hidden="true" ></center>
+            <center><img src="img/chibi/seer.png" width="150px" id="seer_img" hidden="true" ></center>
             <center><div ng-click="showNextChar()" id="nextChar">I Remember My Character</div></center>
           </div>
         </center>
@@ -68,12 +70,37 @@
       <div id="game_container" hidden="true">    
         <center>
           <h1>Ready to Play</h1>
-          <div class="play">Play Now</div>
+          <div class="play" ng-click="start()">Play Now</div>
           <div class="play" ng-click="viewCharacters()">View Again</div>
-          <div class="play" ng-click="goBack()">Go Back</div>
+          <div class="play" ng-click="goBack()">Go Back To Main Title</div>
         </center>
       </div>
       
+			
+			<div id="night_everyone" hidden="true">
+        <center>
+					<div class="center">
+						IT IS NIGHT TIME. <br>EVERYONE CLOSE YOUR EYES
+					</div>
+				</center>
+      </div>
+			
+			<div id="open_eyes" hidden="true">
+        <center>
+					<div class="center" ng-model="charType">
+						{{charType[curr_char].toUpperCase()}}, OPEN YOUR EYES. <br>
+					</div>
+				</center>
+      </div>
+			
+			<div id="vote" hidden="true">
+        <center>
+					<div >
+						
+					</div>
+				</center>
+      </div>
+			
       <script type="text/javascript" src="js/jquery-3.2.0.min.js"></script>
       <script type="text/javascript" src="js/angular.min.js"></script>
       <script type="text/javascript" src="js/main.js"></script>
