@@ -1,0 +1,68 @@
+#main_container {
+  padding: 30px;
+/*  position: relative;*/
+}
+
+#second_container {
+/*  padding: 30px;*/
+/*  position: relative;*/
+}
+
+#third_container {
+  padding: 30px;
+/*  position: relative;*/
+}
+
+.front_btn {
+  display: inline-block;
+  background: lightgray;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 1px lightblue solid;
+  width: 100%;
+  font-size: 50px;
+  text-decoration: none;
+}
+
+#back_menu {
+  width: 100%;
+  background: darkgray;
+  padding: 30px;
+  text-align: center;
+  color: white;
+  font-size: 30px;
+}
+
+#next_menu {
+/*  width: 100%;*/
+  background: darkgray;
+  padding: 30px;
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  margin: 30px;
+/*  margin-left: 10px;*/
+/*  margin-right: 10px;*/
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background: darkgray;
+  display: inline-block;
+  text-align: center;
+  margin-right: 20px;
+  padding-top: 10px;
+}
+
+.box_row {
+  width: 100%;
+  padding-left: 30px; 
+  padding-top: 20px;
+  margin-bottom: 30px;
+}
+
+#myrange {
+  width: 20px;
+}

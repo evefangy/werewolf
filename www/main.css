@@ -1,0 +1,141 @@
+* {
+  -webkit-user-select: none; /* Chrome/Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+
+  /* Rules below not implemented in browsers yet */
+  -o-user-select: none;
+  user-select: none;
+  
+/*  cursor: pointer;*/
+  outline: none;
+}
+
+body {
+}
+
+
+#main_container {
+  padding: 30px;
+/*  position: relative;*/
+}
+
+#second_container {
+/*  padding: 30px;*/
+/*  position: relative;*/
+}
+
+#third_container {
+  padding: 30px;
+/*  position: relative;*/
+}
+
+.front_btn {
+  display: inline-block;
+/*  background: lightgray;*/
+  padding: 10px;
+  margin-top: 30px;
+  border-radius: 20px;
+  border: 5px lightblue solid;
+  width: 100%;
+  font-size: 50px;
+  text-decoration: none;
+  color: dimgray;
+}
+
+#back_menu {
+  width: 100%;
+  background: dimgray;
+/*  padding: 20px;*/
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+#next_menu {
+/*  width: 100%;*/
+  background: darkgray;
+  padding: 30px;
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  margin-left: 75px;
+  margin-right: 75px;
+/*  margin-left: 10px;*/
+/*  margin-right: 10px;*/
+  border-radius: 20px;
+  margin-top: 55px;
+  margin-bottom: 10px;
+}
+
+.box {
+
+  width: 100px;
+  height: 100px;
+  background: darkgray;
+  display: inline-block;
+  text-align: center;
+  padding-top: 10px;
+  color: white;
+  border-radius: 20px;
+  margin-left: 30px;
+  margin-right: 30px; 
+}
+
+.add {
+  font-size: 50px;
+  color:  white;
+}
+
+.minus {
+  font-size: 50px;
+  color:  white;
+}
+
+
+
+.box_row {
+  width: 100%;
+/*  padding-left: 30px; */
+  padding-top: 20px;
+  margin-bottom: 25px;
+}
+
+#warning {
+  color: red;
+}
+
+#sideA {
+	background: lightgray;
+	width: 200px;
+	height: 200px;
+	margin: 20px;
+	padding-top:50px; 
+}
+
+#nextChar {
+	padding: 20px;
+	border-radius: 20px;
+	background-color: lightgrey;
+	margin-top: 20px;
+    width: 200px;	
+}
+
+.play {
+  width: 200px;
+  background: lightgrey;
+  padding: 20px;
+  border-radius: 20px;
+  margin-top: 50px;
+}
+
+#character_container {
+  padding: 20px;
+}
+
+#wolf_img, #monk_img {
+  margin-top: 10px;
+}
