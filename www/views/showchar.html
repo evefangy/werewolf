@@ -1,0 +1,26 @@
+<div id="character_container" hidden="true">
+  <center><h1>TAP TO SHOW CHARACTER</h1></center>
+  <center><div id="sideA" ng-model="player_num" ng-click="showChar()">Player {{player_num}} <br> Show Character</div></center>
+  <center>
+    <div id="sideB" ng-model="player_selection" hidden="true">
+      <font style="margin-bottom:20px;padding:20px;">You Are {{charType[player_selection[player_num-1]]}}</font>
+      <center><img src="img/chibi/guy.png" width="150px" height="150px;" id="monk_img" hidden="true"></center>
+      <center><img src="img/chibi/wolfman.png" width="150px" height="150px;" id="wolf_img" hidden="true" ></center>
+      <center><img src="img/chibi/witch.png" width="150px" height="150px;" id="witch_img" hidden="true" ></center>
+      <center><img src="img/chibi/seer.png" width="150px" height="150px;" id="seer_img" hidden="true" ></center>
+      <center><div ng-click="showNextChar()" id="nextChar">I Remember My Character</div></center>
+    </div>
+  </center>
+</div>
+
+<div id="game_container" hidden="true">    
+  <center>
+    <h1>Ready to Play</h1>
+    <a href="#/game"><div class="play" ng-click="start()">Play Now</div></a>
+    <div class="play" ng-click="viewCharacters()">View Again</div>
+    <a href="#/"><div class="play" ng-click="goBack()">Go Back To Main Title</div></a>
+  </center>
+</div>
+
+<script src="../js/setting.js"></script>
+

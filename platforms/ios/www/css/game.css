@@ -1,0 +1,29 @@
+#ann1,#wolf_close,#seer_close {
+  width: 300px;
+  font-size: 20px;
+  margin-top: 250px;
+}
+
+#werewolf_round {
+  margin-top: 220px;
+/*  border: 1px solid black;*/
+}
+
+.msg {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.continue {
+  padding: 20px;
+  border-radius: 20px;
+  border: 5px solid lightblue;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 50px;
+}
+
+#task1,#task2 {
+  margin-top: -50px;
+  margin-bottom: 50px;
+}

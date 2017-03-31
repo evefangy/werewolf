@@ -1,0 +1,29 @@
+<div id="second_container" hidden="true">
+  <div id="back_menu"><a href="#/"><span class="glyphicon glyphicon-menu-left" style="margin-top:5px;margin-left:20px;float:left;color:white;" ng-click="back()"></span></a><text style="width:100%;">Player Setting</text></div>
+
+  <div class="box_row">
+    <center>
+      <div class="box">Villagers<br><font style="font-size:40px;" ng-model="num_villagers">{{num_villagers}}</font></div>
+      <div class="box">Werewolf<br><font style="font-size:40px;" ng-model="num_werewolf">{{num_werewolf}}</font></div>
+    </center>
+  </div>
+
+  <div class="box_row">
+    <center>
+      <div class="box add" ng-click="increaseV()">+</div>
+      <div class="box add" ng-click="increaseW()">+</div>
+    </center>
+  </div>
+
+  <div class="box_row">
+    <center>
+      <div class="box minus" ng-click="decreaseV()">-</div>
+      <div class="box minus" ng-click="decreaseW()">-</div>
+    </center>
+  </div>
+
+  <a href="#/showchar"><center><div id="next_menu" ng-click="game_setup()">NEXT</div></center></a>
+  <center><div id="warning" ng-model="warning">{{warning}}</div></center>
+</div>
+
+<script type="text/javascript" src="../js/setting.js"></script>

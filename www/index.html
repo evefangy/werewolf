@@ -6,115 +6,17 @@
         <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-theme.min.css">
         <link rel="stylesheet" type="text/css" href="main.css">
+        <link rel="stylesheet" type="text/css" href="css/game.css">
+<!--        <link rel="stylesheet" type="text/css" href="css/game.css">-->
     </head>
     <body>
+      <ng-view></ng-view>
       
-      <div id="main_container">
-        <center><font style="font-size:50px;color:dimgrey;">WEREWOLF</font></center>
-        <center><img src="img/chibi/wolfman.png" width="200px" style="margin-top:50px;margin-bottom:30px;"></center>
-        <center class="front_btn" ng-click="newgame()">New Game</center>
-        <center class="front_btn" ng-click="tutorial()">Tutorial</center>
-      </div>
-        
-      <div id="second_container" hidden="true">
-        <div id="back_menu"><span class="glyphicon glyphicon-menu-left" style="margin-top:5px;margin-left:20px;float:left;" ng-click="back()"></span><text style="width:100%;">Player Setting</text></div>
-        
-        <div class="box_row">
-          <center>
-            <div class="box">Villagers<br><font style="font-size:40px;" ng-model="num_villagers">{{num_villagers}}</font></div>
-            <div class="box">Werewolf<br><font style="font-size:40px;" ng-model="num_werewolf">{{num_werewolf}}</font></div>
-          </center>
-        </div>
-        
-        <div class="box_row">
-          <center>
-            <div class="box add" ng-click="increaseV()">+</div>
-            <div class="box add" ng-click="increaseW()">+</div>
-          </center>
-        </div>
-        
-        <div class="box_row">
-          <center>
-            <div class="box minus" ng-click="decreaseV()">-</div>
-            <div class="box minus" ng-click="decreaseW()">-</div>
-          </center>
-        </div>
-
-        <center><div id="next_menu" ng-click="startgame()">NEXT</div></center>
-        <center><div id="warning" ng-model="warning">{{warning}}</div></center>
-        
-      </div>
-      
-      <div id="third_container" hidden="true">
-        <center><h1>Third</h1></center>
-        <center><img src="img/wolf.jpeg" width="200px"></center>
-        <center class="front_btn" ng-click="">New Game</center>
-        <center class="front_btn" ng-click="back()">Back</center>
-      </div>
-      
-      <div id="character_container" hidden="true">
-        <center><h1>TAP TO SHOW CHARACTER</h1></center>
-        <center><div id="sideA" ng-model="player_num" ng-click="showChar()">Player {{player_num}} <br><br> Show Character</div></center>
-        <center>
-          <div id="sideB" ng-model="player_selection" hidden="true">
-            <font style="margin-bottom:20px;padding:20px;">You Are {{charType[player_selection[player_num-1]]}}</font>
-            <center><img src="img/chibi/guy.png" width="150px" id="monk_img" hidden="true"></center>
-            <center><img src="img/chibi/wolfman.png" width="150px" id="wolf_img" hidden="true" ></center>
-            <center><img src="img/chibi/witch.png" width="150px" id="witch_img" hidden="true" ></center>
-            <center><img src="img/chibi/seer.png" width="150px" id="seer_img" hidden="true" ></center>
-            <center><div ng-click="showNextChar()" id="nextChar">I Remember My Character</div></center>
-          </div>
-        </center>
-      </div>
-
-      <div id="game_container" hidden="true">    
-        <center>
-          <h1>Ready to Play</h1>
-          <div class="play" ng-click="start()">Play Now</div>
-          <div class="play" ng-click="viewCharacters()">View Again</div>
-          <div class="play" ng-click="goBack()">Go Back To Main Title</div>
-        </center>
-      </div>
-      
-			
-			<div id="night_everyone" hidden="true">
-        <center>
-					<div class="center" id="night_seq">
-						IT IS NIGHT TIME. <br>EVERYONE CLOSE YOUR EYES
-					</div>
-					
-					<div class="center" ng-model="charType">
-						<font hidden="true" id="char_open">{{charType[curr_char].toUpperCase()}}, OPEN YOUR EYES. <br></font>
-						
-						<!--			Wolf			-->
-						<div hidden="true" id="wolf1" class="dialogue">Choose One Target</div>
-						<div hidden="true" id="wolf2" class="dialogue">Vote To Kill</div>
-						<div hidden="true" id="wolf3">PLEASE PICK SOMEONE TO KILL</div>
-						
-						<!--			Seer			-->
-						<div hidden="true" id="seer1" class="dialogue">Find One Target</div>
-						<div hidden="true" id="seer2" class="dialogue">Vote</div>
-						<div hidden="true" id="seer3">FIND A SUSPECT</div>
-						
-						<!--			Witch			-->
-						<div hidden="true" id="witch1" class="dialogue">Find One Target</div>
-						<div hidden="true" id="witch2" class="dialogue">Vote</div>
-						<div hidden="true" id="witch3">CHOOSE AN ACTION</div>
-						
-<!--						<div hidden="true" id="vote"></div>-->
-						
-					</div>
-				</center>
-      </div>
-			
-			
-				<div id="vote"></div>
-			
-
-			
       <script type="text/javascript" src="js/jquery-3.2.0.min.js"></script>
       <script type="text/javascript" src="js/angular.min.js"></script>
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
       <script type="text/javascript" src="js/main.js"></script>
+      
       <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
     </body>
 </html>

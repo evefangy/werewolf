@@ -1,0 +1,156 @@
+<div id="night_everyone">
+<div id="vote" hidden="true"></div>
+  <center>
+<!--
+    <div id="ann1" hidden="true">IT IS NIGHT NOW,<br>EVERYONE CLOSE THIER EYES</div>
+    
+    
+    <div id="werewolf_round" >
+      <div id="wolf1" hidden="true" class="msg">WEREWOLVES, OPEN YOUR EYES</div>
+      <div id="wolf2" hidden="true" class="msg">CHOOSE ONE TARGET</div>
+      <div id="wolf3" hidden="true" class="msg">VOTE TO KILL</div>
+      <div class="continue" hidden="true" id="cont1" ng-click="createVote('vote1')" onclick="hide_werewolf()">Continue</div>
+      
+      <div id="task1" hidden="true">VOTE SOMEONE TO KILL</div>
+      <div id="vote1"></div>
+      <div class="continue" id="cont2" hidden="true" onclick="moveto_seer()">Continue</div>
+    </div>
+  
+    <div hidden="true" id="wolf_close">WEREWOLVES, CLOSE YOUR EYES</div> 
+    
+    <div id="seer_round">
+      <div id="seer1" class="msg" hidden="true">SEER, OPEN YOUR EYES</div>
+      <div id="seer2" class="msg" hidden="true">CHOOSE ONE SUSPECT</div>
+      <div id="seer3" class="msg" hidden="true">TEST THEIR LYCANTHROPY</div>
+      <div class="continue" id="cont3" hidden="true" ng-click="createVote('vote2')" onclick="hide_seer()">Continue</div>
+      
+      <div id="task2" hidden="true">VOTE SOMEONE TO TEST</div>
+      <div id="vote2"></div>
+      <div class="continue" id="cont4" hidden="true" onclick="moveto_witch()">Continue</div>
+    </div>    
+    
+    <div id="seer_results" hidden="true">RESULTS</div>
+    
+    <div hidden="true" id="seer_close">SEER, CLOSE YOUR EYES</div>  
+    <div id="vote"></div>
+    
+    <div id="witch_round">
+      <div id="witch1" class="msg" hidden="true">WITCH, OPEN YOUR EYES</div>
+      <div id="witch2" class="msg" hidden="true" ng-model="victim">Player {{victim}} has been injured,<br> CHOOSE YOUR ACTION?</div>
+      <div id="witch3" hidden="true">
+        <div class="continue">USE POTION</div>
+        <div class="continue">USE POISON</div>
+        <div class="continue">PASS</div>    
+      </div>
+    </div>  
+  </center>  
+</div>
+-->
+
+
+<!--
+    
+<div id="morning_everyone" hidden="true">
+  <center>
+    <h3>NIGHT HAS PASSED, EVERYONE OPEN THIER EYES</h3>
+    <center>
+      <div>
+        <div>SOMEONE HAS DIED</div>
+        <div>TAP TO FIND OUT WHO</div>
+      </div>
+      
+      <div>
+        <div>RESULT</div>
+        <div>LETS FIND THE CULPRIT</div>
+      </div>
+    
+      <div>VOTE</div>
+    </center> 
+  </center>  
+</div>
+-->
+    
+
+    
+    
+    
+    
+    
+    
+    
+		
+		<div id="witch_actions" hidden="true">    
+			<h2>PLAYER {{victim}} WAS HURT LAST NIGHT. MAKDE YOUR DECISION. </h2>
+			<a><div class="play" ng-click="save()">Save</div></a>
+			<a><div class="play" ng-click="poison()">Poison</div></a>
+			<a><div class="play" ng-click="nothing()">Do Nothing</div></a>
+		</div>
+		
+    <div class="center" id="night_seq">
+        IT IS NIGHT TIME. <br>EVERYONE CLOSE YOUR EYES
+    </div>
+
+    <div class="center" ng-model="charType">
+      <font hidden="true" id="char_open">{{charType[curr_char].toUpperCase()}}, OPEN YOUR EYES. <br></font>
+      <font hidden="true" id="char_close">{{charType[curr_char].toUpperCase()}}, CLOSE YOUR EYES. <br></font>
+    </div>
+      <!--			Wolf			-->
+      <div hidden="true" id="wolf1" class="dialogue">CHOOSE ONE TARGET</div>
+      <div hidden="true" id="wolf2" class="dialogue">VOTE TO KILL</div>
+      <div hidden="true" id="wolf3">CHOOSE A VICTIM</div>
+
+      <!--			Seer			-->
+      <div hidden="true" id="seer1" class="dialogue">CHOOSE ONE SUSPECT</div>
+      <div hidden="true" id="seer2" class="dialogue">VOTE TO TEST</div>
+      <div hidden="true" id="seer3">FIND A SUSPECT</div>
+			<div hidden="true" id="seer_y">YES, YOU FOUND THE WEREWOLF!</div>
+			<div hidden="true" id="seer_n">TOO BAD. THIS PERSON IS INNOCENT.</div>
+			
+      <!--			Witch			-->
+      <div hidden="true" id="witch1" class="dialogue">DECIDE ON AN ACTION</div>
+      <div hidden="true" id="witch2" class="dialogue">TAKE AN ACTION</div>
+      <div hidden="true" id="witch3">CHOOSE AN ACTION</div>
+			
+
+      <div hidden="true" id="vote"></div>
+
+
+  </center>
+	
+</div>
+
+<div id="morning_everyone" hidden="true">
+	
+	<div class="center" id="morning_seq">
+					IT IS MORNING. <br>EVERYONE OPEN YOUR EYES
+	</div>
+	
+	
+	<div id="announce_victim" hidden="true">
+		<center>
+				<div class = "center" id="victim" hidden="true"></div>
+				{{fatalities[Math.rand()%5]}} 
+				<h2>SOMEONE WAS FOUND DEAD LAST NIGHT</h2>
+				<div id = "show_victim" class="front_btn" ng-click="show_vic()">TAP TO SEE WHO.</div>
+				<h2><div id="vic" hidden="true">Player {{victim}} </div></h2>
+				<div id="poisoned" hidden="true">Player {{po_victim}} </div>
+				<div id="safe_night" hidden="true">JUST KIDDING! NOBODY WAS HURT...FOR NOW </div>
+		</center>
+	</div>
+  
+  <div id="discuss" class = "center" hidden="true">
+	PLEASE DISCUSS AND HELP EACH OTHER FIND THE SUSPECT.
+</div>
+
+
+<div id="winner" ng-model="winner" class = "center" hidden="true">
+			 {{winner}} WIN!
+</div>
+	
+</div>
+
+
+
+
+<script src="../js/setting.js"></script>
+			

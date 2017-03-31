@@ -1,3 +1,44 @@
+* {
+  -webkit-user-select: none; /* Chrome/Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+
+  /* Rules below not implemented in browsers yet */
+  -o-user-select: none;
+  user-select: none;
+  
+/*  cursor: pointer;*/
+  outline: none;	
+}
+
+body {
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  text-decoration: none;
+  color: black;
+  
+}
+
+
+a:visited {
+  text-decoration: none;
+  color: black;
+  
+}
+
+
+a:active {
+  text-decoration: none;
+  color: black;
+  
+}
+
 #main_container {
   padding: 30px;
 /*  position: relative;*/
@@ -15,23 +56,27 @@
 
 .front_btn {
   display: inline-block;
-  background: lightgray;
+/*  background: lightgray;*/
   padding: 10px;
-  margin-top: 10px;
-  border-radius: 10px;
-  border: 1px lightblue solid;
+  margin-top: 30px;
+  border-radius: 20px;
+  border: 5px lightblue solid;
   width: 100%;
   font-size: 50px;
   text-decoration: none;
+  color: dimgray;
 }
 
 #back_menu {
   width: 100%;
-  background: darkgray;
-  padding: 30px;
+  background: dimgray;
+/*  padding: 20px;*/
   text-align: center;
   color: white;
   font-size: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
 }
 
 #next_menu {
@@ -41,28 +86,139 @@
   text-align: center;
   color: white;
   font-size: 30px;
-  margin: 30px;
+  margin-left: 55px;
+  margin-right: 55px;
 /*  margin-left: 10px;*/
 /*  margin-right: 10px;*/
+  border-radius: 20px;
+  margin-top: 50px;
+  margin-bottom: 10px;
 }
 
 .box {
+
   width: 100px;
   height: 100px;
   background: darkgray;
   display: inline-block;
   text-align: center;
-  margin-right: 20px;
   padding-top: 10px;
+  color: white;
+  border-radius: 20px;
+  margin-left: 30px;
+  margin-right: 30px; 
+}
+
+.add {
+  font-size: 50px;
+  color:  white;
+}
+
+.minus {
+  font-size: 50px;
+  color:  white;
 }
 
 .box_row {
   width: 100%;
-  padding-left: 30px; 
+/*  padding-left: 30px; */
   padding-top: 20px;
-  margin-bottom: 30px;
+/*  margin-bottom: 10px;*/
+	padding-right: 0px;
+	padding-left: 0px;
+	
 }
 
-#myrange {
-  width: 20px;
+#warning {
+  color: red;
+}
+
+#sideA {
+  background: dimgrey;
+  width: 150px;
+  height: 150px;
+  margin: 20px;
+  padding-top:50px;
+  color: white;
+}
+
+#nextChar {
+  padding: 20px;
+  border-radius: 20px;
+  background-color: dimgrey;
+  margin-top: 20px;
+  width: 200px;	
+  color: white;
+}
+
+.play {
+  width: 200px;
+  background: lightgrey;
+  padding: 20px;
+  border-radius: 20px;
+  margin-top: 50px; 
+}
+
+#character_container {
+  padding: 20px;
+}
+
+#wolf_img, #monk_img {
+  margin-top: 10px;
+}
+
+/*//put a whole sentence in the center of the screen*/
+.center{
+	width: 100%;
+/*  height: 100px;*/
+/*	*/
+	border-radius: 0px;
+/*  background: lightgrey;*/
+  display: inline-block;
+  text-align: center;
+/*  padding-top: 100px;*/
+  color: black;
+	margin-top: 200px;
+	padding: 20px;
+/*  border-radius: 20px;*/
+/*  margin-left: 30px;*/
+/*  margin-right: 30px; */
+/*  border: 1px solid black;*/
+}
+
+.dialogue {
+	margin-top: 20px;
+/*	font-size: 30px;*/
+}
+
+.votechar {
+	height: 100px;
+	width: 100px;
+	border-radius: 20px;
+	margin-left: 5px;
+	margin-right: 5px;
+	background-color: dimgray;
+	display: inline-block;
+	z-index: 1;
+	
+}
+
+.votechar_txt {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 40px;
+	color: white;
+	z-index: 2;
+/*	*/
+}
+
+.x {
+	
+	z-index: -1;
+	position: relative;
+	top: -55px;
+}
+
+#vote {
+  margin-top: 100px;
 }
