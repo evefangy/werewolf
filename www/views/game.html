@@ -1,5 +1,10 @@
-<div id="night_everyone">
+<!--Every page shown during the game-->
+
+<!--voting box [details for each voting box are implemented in main.js]-->
 <div id="vote" hidden="true"></div>
+
+<!--Night Alternation-->
+<div id="night_alt">
   <center>
 <!--
     <div id="ann1" hidden="true">IT IS NIGHT NOW,<br>EVERYONE CLOSE THIER EYES</div>
@@ -70,21 +75,7 @@
 </div>
 -->
     
-
     
-    
-    
-    
-    
-    
-    
-		
-		<div id="witch_actions" hidden="true">    
-			<h2>PLAYER {{victim}} WAS HURT LAST NIGHT. MAKDE YOUR DECISION. </h2>
-			<a><div class="play" ng-click="save()">Save</div></a>
-			<a><div class="play" ng-click="poison()">Poison</div></a>
-			<a><div class="play" ng-click="nothing()">Do Nothing</div></a>
-		</div>
 		
     <div class="center" id="night_seq">
         IT IS NIGHT TIME. <br>EVERYONE CLOSE YOUR EYES
@@ -94,10 +85,11 @@
       <font hidden="true" id="char_open">{{charType[curr_char].toUpperCase()}}, OPEN YOUR EYES. <br></font>
       <font hidden="true" id="char_close">{{charType[curr_char].toUpperCase()}}, CLOSE YOUR EYES. <br></font>
     </div>
+    
       <!--			Wolf			-->
       <div hidden="true" id="wolf1" class="dialogue">CHOOSE ONE TARGET</div>
       <div hidden="true" id="wolf2" class="dialogue">VOTE TO KILL</div>
-      <div hidden="true" id="wolf3">CHOOSE A VICTIM</div>
+<!--      <div hidden="true" id="wolf3">CHOOSE A VICTIM</div>-->
 
       <!--			Seer			-->
       <div hidden="true" id="seer1" class="dialogue">CHOOSE ONE SUSPECT</div>
@@ -110,46 +102,53 @@
       <div hidden="true" id="witch1" class="dialogue">DECIDE ON AN ACTION</div>
       <div hidden="true" id="witch2" class="dialogue">TAKE AN ACTION</div>
       <div hidden="true" id="witch3">CHOOSE AN ACTION</div>
-			
+		  <center><div id="warn" hidden="true">YOU DON'T HAVE THIS PORTION LEFT</div></center>
+    
+      <div hidden="true" id="witch_actions">    
+        <h3>PLAYER {{victim}} WAS HURT LAST NIGHT. MAKE YOUR DECISION.</h3>
+        <a><div class="play" ng-click="save()">Save</div></a>
+        <a><div class="play" ng-click="poison_someone()">Poison</div></a>
+        <a><div class="play" ng-click="nothing()">Do Nothing</div></a>
+		  </div>	
 
-      <div hidden="true" id="vote"></div>
+    
+<!--      <div hidden="true" id="vote"></div>-->
 
-
-  </center>
-	
-</div>
-
-<div id="morning_everyone" hidden="true">
-	
-	<div class="center" id="morning_seq">
-					IT IS MORNING. <br>EVERYONE OPEN YOUR EYES
-	</div>
-	
-	
-	<div id="announce_victim" hidden="true">
-		<center>
-				<div class = "center" id="victim" hidden="true"></div>
-				{{fatalities[Math.rand()%5]}} 
-				<h2>SOMEONE WAS FOUND DEAD LAST NIGHT</h2>
-				<div id = "show_victim" class="front_btn" ng-click="show_vic()">TAP TO SEE WHO.</div>
-				<h2><div id="vic" hidden="true">Player {{victim}} </div></h2>
-				<div id="poisoned" hidden="true">Player {{po_victim}} </div>
-				<div id="safe_night" hidden="true">JUST KIDDING! NOBODY WAS HURT...FOR NOW </div>
-		</center>
-	</div>
-  
-  <div id="discuss" class = "center" hidden="true">
-	PLEASE DISCUSS AND HELP EACH OTHER FIND THE SUSPECT.
+  </center>	
 </div>
 
 
-<div id="winner" ng-model="winner" class = "center" hidden="true">
-			 {{winner}} WIN!
-</div>
-	
+
+<div id="morning_alt" hidden="true">
+	<center>
+    <div class="center" id="morning_seq">
+        IT IS MORNING. <br>EVERYONE OPEN YOUR EYES
+    </div>
+
+    <div hidden="true" id="announce_victim">
+          <div id = "fat"><h3>{{fat}} </h3></div>
+<!--          <h3>SOMEONE WAS FOUND DEAD LAST NIGHT</h3>-->
+          <div id = "show_victim" class="front_btn" ng-click="show_vic()">TAP TO SEE WHO</div>
+          <h2><div id="vic" hidden="true">Player {{victim}} </div></h2>
+          <h2><div id="poisoned" hidden="true">Player {{po_victim}} </div></h2>
+          <h2><div id="safe_night" hidden="true">JUST KIDDING! NOBODY WAS HURT...FOR NOW </div></h2>
+
+    </div>
+
+    <div hidden="true" id="discuss" class = "center">
+      PLEASE DISCUSS AND HELP EACH OTHER FIND THE SUSPECT.
+    </div>
+
+
+    <div hidden="true" id="winner" ng-model="winner" class = "center">
+           {{winner}} WIN!
+    </div>
+	</center>
 </div>
 
 
+
+<a><div hidden="true" id ="reveal_identity" class="play" ng-click="viewCharacters()">Identity Reveal</div></a>
 
 
 <script src="../js/setting.js"></script>
