@@ -46,14 +46,15 @@ app.controller('werewolf_ctrl', function($scope) {
   $scope.fat =""; //randomly generate a fatality
   
   //modify people
-  $scope.decreaseV = function(){ if($scope.num_villagers>0) $scope.num_villagers--; }
-  $scope.decreaseW = function(){ if($scope.num_werewolf>0) $scope.num_werewolf--; }
-  $scope.increaseV = function(){ $scope.num_villagers++; }
-  $scope.increaseW = function(){ $scope.num_werewolf++; }
+  $scope.decreaseV = function(){ if($scope.num_villagers>2) $scope.num_villagers--; }
+  $scope.decreaseW = function(){ if($scope.num_werewolf>1) $scope.num_werewolf--; }
+  $scope.increaseV = function(){ if($scope.num_villagers<10) $scope.num_villagers++; }
+  $scope.increaseW = function(){ if($scope.num_werewolf<5) $scope.num_werewolf++; }
 
   //navigation
   $scope.tutorial = function() {
     $("#main_container").fadeOut(500);
+    location.href = "https://xd.adobe.com/view/80a3607b-4daf-4a85-b788-9cac4060e527/screen/2952f8ab-26da-4617-99f1-51ef52695a70/Tutorial";
     setTimeout(function(){
       $("#game_container").fadeIn(500);
     },600);
@@ -322,16 +323,21 @@ app.controller('werewolf_ctrl', function($scope) {
     // fade out all wolf actions and transit to seer action
     $("#vote").fadeOut(600);
     setTimeout(function(){
+      var player = document.getElementById('bg3');
+      player.play();
       $("#char_close").fadeIn(400);
       setTimeout(function(){
         $("#char_close").fadeOut(400);
+        player.pause();
           setTimeout(function(){
             // update next character up
             $scope.$apply(function(){
               $scope.curr_char = 2;
             });
             setTimeout(function(){
-              $("#char_open").fadeIn(400);
+              var player1 = document.getElementById('bg6');
+              player1.play();
+              $("#chfar_open").fadeIn(400);
               setTimeout(function(){
                 $("#seer1").fadeIn(400);
                 setTimeout(function(){
@@ -340,6 +346,7 @@ app.controller('werewolf_ctrl', function($scope) {
                     $("#char_open").fadeOut(400);
                     $("#seer1").fadeOut(400); 
                     $("#seer2").fadeOut(400);
+                    player1.pause();
                     setTimeout(function(){
                       $scope.createVote();		
                       var confirm_btn = document.createElement("div");
@@ -393,9 +400,12 @@ app.controller('werewolf_ctrl', function($scope) {
 					$("#seer_y").fadeOut(400);
 					$("#seer_n").fadeOut(400);
 					setTimeout(function(){
+                    var player2 = document.getElementById('bg7');
+                    player2.play();
 					$("#char_close").fadeIn(400);
 					setTimeout(function(){
 						$("#char_close").fadeOut(400);
+                        player2.pause();
 							setTimeout(function(){
                 // update next-up charater
                 $scope.$apply(function(){
@@ -404,6 +414,8 @@ app.controller('werewolf_ctrl', function($scope) {
                 
                 // witch actions
                 setTimeout(function(){
+                  var player3 = document.getElementById('bg4');
+                  player3.play();
                   $("#char_open").fadeIn(400);
                   setTimeout(function(){
                     $("#witch1").fadeIn(400);
@@ -413,6 +425,7 @@ app.controller('werewolf_ctrl', function($scope) {
                         $("#char_open").fadeOut(400);
                         $("#witch1").fadeOut(400); 
                         $("#witch2").fadeOut(400);
+                        player3.pause();
                         setTimeout(function(){
                             $("#witch_actions").fadeIn(400);
                           }, 600)
@@ -421,7 +434,7 @@ app.controller('werewolf_ctrl', function($scope) {
                     },2000);
                   },2000);
 							},800);
-						},2000);
+						},3000);
 					},2000);
 				},1000);
 		},2000);
@@ -496,22 +509,28 @@ app.controller('werewolf_ctrl', function($scope) {
 			$("#witch_actions").fadeOut(400);
 			
       setTimeout(function(){
+        var player4 = document.getElementById('bg5');
+        player4.play();
         $("#char_close").fadeIn(400);
         setTimeout(function(){
           $("#char_close").fadeOut(400);
+          player4.pause();
           //day sequence
+            var player7 = document.getElementById('bg8');
+            player7.play();
     		  $("#night_alt").fadeOut(400);
           setTimeout(function(){
             $("#morning_alt").fadeIn(600);
             setTimeout(function(){
               $("#morning_seq").fadeOut(400);
               setTimeout(function(){
+                player7.pause();
                 $("#announce_victim").fadeIn(400);
               }, 600)
             }, 2000)
-          }, 500)
-        }, 1000)
-      }, 500)
+          }, 2000)
+        }, 2000)
+      }, 2000)
 		}
 			
     // just for fun /* needs to be implemented*/
@@ -616,11 +635,15 @@ app.controller('werewolf_ctrl', function($scope) {
               $scope.fat = $scope.fatalities[Math.floor((Math.random() * 4))];
             })
             setTimeout(function(){
-              $("#night_alt").fadeIn(400); //start night
+              $("#night_alt").fadeIn(700); //start night
             
               setTimeout(function(){
-                $("#night_seq").fadeOut(400);
+                $("#night_seq").fadeOut(700);
+                var player5 = document.getElementById('bg1');
+                player5.pause();
                 setTimeout(function(){
+                  var player6 = document.getElementById('bg2');
+                  player6.play();          
                   $("#char_open").fadeIn(400); //start werewolf
                   setTimeout(function(){
                     $("#wolf1").fadeIn(400); //que werewolf dialogue
@@ -630,6 +653,7 @@ app.controller('werewolf_ctrl', function($scope) {
                         $("#char_open").fadeOut(400);
                         $("#wolf1").fadeOut(400); 
                         $("#wolf2").fadeOut(400);
+                        player6.pause();
                         setTimeout(function(){
                           $scope.createVote();
                           var confirm_btn = document.createElement("div");

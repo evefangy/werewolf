@@ -79,11 +79,18 @@
 		
     <div class="center" id="night_seq">
         IT IS NIGHT TIME. <br>EVERYONE CLOSE YOUR EYES
+        <audio id="bg1" src="audio/all_close.mp3" autoplay="autoplay"></audio>
     </div>
 
     <div class="center" ng-model="charType">
       <font hidden="true" id="char_open">{{charType[curr_char].toUpperCase()}}, OPEN YOUR EYES. <br></font>
       <font hidden="true" id="char_close">{{charType[curr_char].toUpperCase()}}, CLOSE YOUR EYES. <br></font>
+      <audio id="bg2" src="audio/wolf_open.mp3" preload="none"></audio>
+      <audio id="bg3" src="audio/wolf_close.mp3" preload="none"></audio>
+      <audio id="bg4" src="audio/witch_open.mp3" preload="none"></audio>
+      <audio id="bg5" src="audio/witch_close.mp3" preload="none"></audio>
+      <audio id="bg6" src="audio/seer_open.mp3" preload="none"></audio>
+      <audio id="bg7" src="audio/seer_close.mp3" preload="none"></audio>
     </div>
     
       <!--			Wolf			-->
@@ -123,6 +130,7 @@
 	<center>
     <div class="center" id="morning_seq">
         IT IS MORNING. <br>EVERYONE OPEN YOUR EYES
+        <audio id="bg8" src="audio/all_open.mp3" preload="none"></audio>
     </div>
 
     <div hidden="true" id="announce_victim">
