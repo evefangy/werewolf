@@ -24,21 +24,31 @@ app.config(['$locationProvider', function($locationProvider) {
   $locationProvider.hashPrefix('');
 }]);
 
+/////// save data //////
+var savedata = jQuery.parseJSON(
+	jQuery.ajax({
+		url: "data/data.json",
+		async: false,		
+		dataType: "json"
+	}).responseText
+);
+
+
 /////// game logic ///////
 app.controller('werewolf_ctrl', function($scope) {
-  $scope.num_villagers = 4;
-  $scope.num_werewolf = 1;
-  $scope.warning = "";
-  $scope.player_selection = [];
+  $scope.num_villagers = savedata.num_vil;
+  $scope.num_werewolf = savedata.num_wol;
+  $scope.warning = savedata.warning;
+  $scope.player_selection = savedata.player_selection;
   $scope.charType = ["Villager","Werewolf","Seer","Witch"]
   $scope.curr_char = 1;
-  $scope.victim = 0;
+  $scope.victim = savedata.victim;
 	$scope.target = 0;
 	$scope.po_victim = 0;
-  $scope.player_num = 1;
+  $scope.player_num = savedata.num_player;
 	$scope.wolf = []
-	$scope.med = 1;
-	$scope.poison = 1;
+	$scope.med = savedata.med;
+	$scope.poison = savedata.poison;
   $scope.winningCondition = false;
 	$scope.winner = "";
   $scope.currentlyPlaying = true; // determine if a round of game is over
@@ -46,10 +56,14 @@ app.controller('werewolf_ctrl', function($scope) {
   $scope.fat =""; //randomly generate a fatality
   
   //modify people
-  $scope.decreaseV = function(){ if($scope.num_villagers>2) $scope.num_villagers--; }
-  $scope.decreaseW = function(){ if($scope.num_werewolf>1) $scope.num_werewolf--; }
-  $scope.increaseV = function(){ if($scope.num_villagers<10) $scope.num_villagers++; }
-  $scope.increaseW = function(){ if($scope.num_werewolf<5) $scope.num_werewolf++; }
+  $scope.decreaseV = function(){ if($scope.num_villagers>2) $scope.num_villagers--; 
+															savedata.num_vil = $scope.num_villagers;}
+  $scope.decreaseW = function(){ if($scope.num_werewolf>1) $scope.num_werewolf--; 
+															savedata.num_wol = $scope.num_werewolf;}
+  $scope.increaseV = function(){ if($scope.num_villagers<10) $scope.num_villagers++; 
+															savedata.num_vil = $scope.num_villagers;}
+  $scope.increaseW = function(){ if($scope.num_werewolf<5) $scope.num_werewolf++; 
+															savedata.num_wol = $scope.num_werewolf;}
 
   //navigation
   $scope.tutorial = function() {
@@ -77,6 +91,7 @@ app.controller('werewolf_ctrl', function($scope) {
       temp = $scope.player_selection[currentIndex];
       $scope.player_selection[currentIndex] = $scope.player_selection[randomIndex];
       $scope.player_selection[randomIndex] = temp;
+	  savedata.player_selection = $scope.player_selection;
     }
   }
 
@@ -95,7 +110,7 @@ app.controller('werewolf_ctrl', function($scope) {
     $scope.player_selection.push(3);
 
     $scope.shuffle();
-		
+	
 		//find the players who are wolfs, initiate player status
     console.log("wolves")
     for (var i = 0; i<total; i++){
@@ -105,6 +120,8 @@ app.controller('werewolf_ctrl', function($scope) {
       }
       $scope.status[i] = 1;
     }
+	
+	savedata.player_selection = $scope.player_selection;
   }
   
   //setup characters for players
@@ -126,6 +143,8 @@ app.controller('werewolf_ctrl', function($scope) {
     }
     $scope.player_num = 1;
     $scope.random_generate();
+	
+	savedata.num_player = $scope.player_num;
   }
   
   //show the character card

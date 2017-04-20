@@ -1,0 +1,12 @@
+{
+	"num_vil" : 4, 
+	"num_wol" : 1, 
+	"warning" : "",
+	"player_selection" : [], 
+	"victim" : 0, 
+	"num_player" : 1, 
+	"med" : 1, 
+	"poison" : 1, 
+	"win" : false, 
+	"winner" : ""
+}
