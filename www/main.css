@@ -130,7 +130,18 @@ a:active {
 /*  margin-bottom: 10px;*/
 	padding-right: 0px;
 	padding-left: 0px;
-	
+/*	border: 5px solid black;*/
+}
+
+.box_row2 {
+  width: 100%;
+/*  padding-left: 30px; */
+  padding-top: 20px;
+/*  margin-bottom: 10px;*/
+	padding-right: 0px;
+	padding-left: 0px;
+/*	border: 5px solid black;*/
+  margin-bottom: -80px;
 }
 
 #warning {
@@ -204,7 +215,7 @@ a:active {
 	background-color: dimgray;
 	display: inline-block;
 	z-index: 1;
-	
+/*  border: 1px solid black;*/
 }
 
 .votechar_txt {
@@ -217,12 +228,20 @@ a:active {
 }
 
 .x {
-	
 	z-index: -1;
 	position: relative;
 	top: -55px;
 }
 
+.skull {
+	
+  
+	z-index: -1;
+	position: relative;
+	top: -135px;
+/*  border: 1px solid black;*/
+}
+
 #vote {
-  margin-top: 100px;
+  padding-top: 100px;
 }

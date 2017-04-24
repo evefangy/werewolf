@@ -44,6 +44,8 @@ app.controller('werewolf_ctrl', function($scope) {
   $scope.currentlyPlaying = true; // determine if a round of game is over
 	$scope.status = []; //player_selection is identity, index of the array is the player number
   $scope.fat =""; //randomly generate a fatality
+  //new_add
+  $scope.iteration = 1;
   
   //modify people
   $scope.decreaseV = function(){ if($scope.num_villagers>2) $scope.num_villagers--; }
@@ -97,12 +99,27 @@ app.controller('werewolf_ctrl', function($scope) {
     $scope.shuffle();
 		
 		//find the players who are wolfs, initiate player status
-    console.log("wolves")
+    
+    //new_add
     for (var i = 0; i<total; i++){
-      if ($scope.player_selection[i] == 1){
-        $scope.wolf.push(i+1) //index starts with 0, but players start with player 1
-        console.log(i+1)
+      if($scope.player_selection[i] == 0){
+        console.log("Player "+(i+1)+": Villager")
       }
+      else if ($scope.player_selection[i] == 1){
+        $scope.wolf.push(i+1) //index starts with 0, but players start with player 1
+        console.log("Player "+(i+1)+": Wolf")
+//        console.log(i+1)
+      }
+      
+      else if($scope.player_selection[i] == 2){
+        console.log("Player "+(i+1)+": Seer")
+      }
+      
+      else if($scope.player_selection[i] == 3){
+        console.log("Player "+(i+1)+": Witch")
+      }
+      
+      
       $scope.status[i] = 1;
     }
   }
@@ -198,8 +215,9 @@ app.controller('werewolf_ctrl', function($scope) {
 	
 	//////// voting box initialization /////////
  $scope.createVote = function(){
-//    console.log("clicked");
-    var name = "vote";
+//   $scope.status[4] = 0;
+   
+   var name = "vote";
     
     while(document.getElementById(name).hasChildNodes()) {
       document.getElementById(name).removeChild(document.getElementById(name).lastChild);
@@ -211,28 +229,45 @@ app.controller('werewolf_ctrl', function($scope) {
 //   evenly distrubute the voting box accordingly to the number of player left
     for(var i=0;i<total_players/3;i++){
       var votebox = document.createElement("center");
-      votebox.setAttribute("class","box_row");
+      votebox.setAttribute("class","box_row2");
       for(var j=0;j<3;j++){
         if(num_added<total_players){
           var vote = document.createElement("div");
           var vote_txt = document.createElement("center");
           var x_img = document.createElement("img");
-
-          vote_txt.innerHTML = "Player " + (i*3+j+1); 
-          vote.setAttribute("id","player" + (i*3+j+1)); 
+          
+          var playerNumber = i*3+j+1;
+          vote_txt.innerHTML = "Player " + playerNumber; 
+          vote.setAttribute("id","player" + playerNumber); 
           vote.setAttribute("class","votechar");
           vote_txt.setAttribute("class","votechar_txt");
-          var playerNumber = i*3+j+1;
           vote.setAttribute("ng-click","vote_pend("+playerNumber+")"); 
 
           x_img.setAttribute("class","x");
           x_img.setAttribute("width","90px");
           x_img.setAttribute("src","img/x.png");
-          x_img.setAttribute("id","x"+(i*3+j+1));
+          x_img.setAttribute("id","x"+playerNumber);
           x_img.setAttribute("style", "");
 
           vote.appendChild(vote_txt);
           vote.appendChild(x_img);
+          
+          
+                    
+          //new_add [also css file for new row2 and skull class]
+          //need iteration >1 to make sure other gods don't know who died during the night
+          var skull_img = document.createElement("img");
+          skull_img.setAttribute("class","skull");
+          skull_img.setAttribute("width","80px");
+          skull_img.setAttribute("src","img/skull.png");
+          skull_img.setAttribute("id","skull"+playerNumber);
+          skull_img.setAttribute("style", "");
+          vote.appendChild(skull_img);  
+          
+     
+          //end
+          
+          
           votebox.appendChild(vote);
         }
         num_added++;	
@@ -251,7 +286,16 @@ app.controller('werewolf_ctrl', function($scope) {
 					}
 				}
 			}
-		},500);
+      //new_add
+      setTimeout(function(){
+        if ($scope.iteration > 1){
+            if($scope.status[playerNumber] == 0){
+              console.log("detected player "+playerNumber+" dead")
+              $("#skull"+playerNumber).css("z-index",3);
+            }
+          } 
+      }, 200)
+		},400);
   }
 
 // display an "x" on the voting box to indicate selection
@@ -308,65 +352,78 @@ app.controller('werewolf_ctrl', function($scope) {
         $scope.winner = "VILLAGERS"
       });
 		} 
-		console.log("Winning condition done checking")
-		console.log($scope.winner)
+    
+    //new_add
+//		console.log("Winning condition done checking")
+		
 	}
 	
 
   /*  werwolf to seer transition  */ /* need timer for when seer is dead */
   $scope.wolf_to_seer = function(){
     // update victim
-		$scope.victim = $scope.target;
-    $scope.status[$scope.victim] = 0;	
-    console.log("victim")
-    console.log($scope.victim)
-    // fade out all wolf actions and transit to seer action
-    $("#vote").fadeOut(600);
-    setTimeout(function(){
-      var player = document.getElementById('bg3');
-      player.play();
-      $("#char_close").fadeIn(400);
+    
+    //new_add
+    if($scope.target != 0){
       setTimeout(function(){
-        $("#char_close").fadeOut(400);
-        player.pause();
-          setTimeout(function(){
-            // update next character up
-            $scope.$apply(function(){
-              $scope.curr_char = 2;
-            });
+        $scope.target = 0;
+      }, 2000)
+
+      $scope.victim = $scope.target;
+      $scope.status[$scope.victim] = 0;	
+      console.log("victim")
+      console.log($scope.victim)
+      // fade out all wolf actions and transit to seer action
+      $("#vote").fadeOut(600);
+      setTimeout(function(){
+        var player = document.getElementById('bg3');
+        player.play();
+        $("#char_close").fadeIn(400);
+        setTimeout(function(){
+          $("#char_close").fadeOut(400);
+          player.pause();
             setTimeout(function(){
-              var player1 = document.getElementById('bg6');
-              player1.play();
-              $("#chfar_open").fadeIn(400);
+              // update next character up
+              $scope.$apply(function(){
+                $scope.curr_char = 2;
+              });
               setTimeout(function(){
-                $("#seer1").fadeIn(400);
+                var player1 = document.getElementById('bg6');
+                player1.play();
+                $("#char_open").fadeIn(400);
                 setTimeout(function(){
-                  $("#seer2").fadeIn(400);
+                  $("#seer1").fadeIn(400);
                   setTimeout(function(){
-                    $("#char_open").fadeOut(400);
-                    $("#seer1").fadeOut(400); 
-                    $("#seer2").fadeOut(400);
-                    player1.pause();
+                    $("#seer2").fadeIn(400);
                     setTimeout(function(){
-                      $scope.createVote();		
-                      var confirm_btn = document.createElement("div");
-                      confirm_btn.setAttribute("class","front_btn");
-                      confirm_btn.innerHTML = "Confirm";
-                      confirm_btn.setAttribute("id","check")
-                      confirm_btn.setAttribute("ng-click", "seer_to_witch()") 
-                      document.getElementById("vote").appendChild(confirm_btn);
+                      $("#char_open").fadeOut(400);
+                      $("#seer1").fadeOut(400); 
+                      $("#seer2").fadeOut(400);
+                      player1.pause();
                       setTimeout(function(){
-                        compile(document.getElementById("check"));
-                      }, 500)
-                      $("#vote").fadeIn(800);
-                    },1300);
+                        $scope.createVote();		
+                        var confirm_btn = document.createElement("div");
+                        confirm_btn.setAttribute("class","front_btn");
+                        confirm_btn.innerHTML = "Confirm";
+                        confirm_btn.setAttribute("id","check")
+                        confirm_btn.setAttribute("ng-click", "seer_to_witch()") 
+                        //new_add
+                        confirm_btn.setAttribute("style","text-align:center")
+                        //end
+                        document.getElementById("vote").appendChild(confirm_btn);
+                        setTimeout(function(){
+                          compile(document.getElementById("check"));
+                        }, 500)
+                        $("#vote").fadeIn(800);
+                      },1300);
+                    },2000);
                   },2000);
                 },2000);
-              },2000);
-            },800);
-        },600);
-      },3000);
-    },1000);
+              },800);
+          },600);
+        },3000);
+      },1000);
+    }
   }
 
   /*  seer to witch transition  */
@@ -374,9 +431,15 @@ app.controller('werewolf_ctrl', function($scope) {
 		// flag for correct guess on the suspect 
     var test = 0;
     // update suspect
+        //new_add
+    if($scope.target != 0){
+    setTimeout(function(){
+      $scope.target = 0;
+    }, 2000)
 		$scope.seer_check = $scope.target;
 
-    console.log("seer_guess")
+    //new_add
+    console.log("seer guess")
 		console.log($scope.seer_check)
 		
 		// check if the proposed suspect is any of the wolves
@@ -439,6 +502,7 @@ app.controller('werewolf_ctrl', function($scope) {
 				},1000);
 		},2000);
 	}
+  }
   
   
   
@@ -475,6 +539,8 @@ app.controller('werewolf_ctrl', function($scope) {
 				confirm_btn.innerHTML = "Confirm";
 				confirm_btn.setAttribute("id","poison")
 				confirm_btn.setAttribute("ng-click", "vote_poison()") 
+        //new_add
+        confirm_btn.setAttribute("style","text-align:center")
 				document.getElementById("vote").appendChild(confirm_btn);
 				setTimeout(function(){
 					compile(document.getElementById("poison")) 
@@ -498,14 +564,20 @@ app.controller('werewolf_ctrl', function($scope) {
   }
 	
 		$scope.vote_poison = function(){
+          //new_add
+    if($scope.target != 0){
+    setTimeout(function(){
+      $scope.target = 0;
+    }, 2000)
 			$scope.po_victim = $scope.target;
       console.log("poisoned")
       console.log($scope.po_victim)
 			$scope.nothing();
 		}
-		
+    }
+    
 		$scope.nothing = function(){
-      $("vote").fadeOut(400);
+      $("#vote").fadeOut(400);
 			$("#witch_actions").fadeOut(400);
 			
       setTimeout(function(){
@@ -573,6 +645,8 @@ app.controller('werewolf_ctrl', function($scope) {
                 confirm_btn.innerHTML = "Confirm";
                 confirm_btn.setAttribute("id","vote_sus")
                 confirm_btn.setAttribute("ng-click", "vote_suspect()") 
+                //new_add
+                confirm_btn.setAttribute("style","text-align:center")
                 document.getElementById("vote").appendChild(confirm_btn);
                 setTimeout(function(){
                   compile(document.getElementById("vote_sus"));
@@ -590,17 +664,29 @@ app.controller('werewolf_ctrl', function($scope) {
 		}//end of show_vic
 		
 		$scope.vote_suspect = function(){
-			$scope.status[$scope.target] = 0;
-      console.log("suspect killed by voting")
-      console.log($scope.target)
-			setTimeout(function(){
-				$("#vote").fadeOut(400)
-				setTimeout(function(){
-          console.log("finish one iteration")
-          $scope.start()
-				},600)
-			},600)
-		}
+      //new_add
+      if($scope.target != 0){
+        $scope.status[$scope.target] = 0;
+        console.log("suspect killed by voting")
+        console.log($scope.target)
+        setTimeout(function(){
+          $scope.target = 0;
+        }, 2000)
+           //end
+        setTimeout(function(){
+          $("#vote").fadeOut(400)
+          setTimeout(function(){
+            //new_add
+  //          console.log("finish one iteration")
+            $scope.start()
+            //new_add
+            $scope.iteration++;
+            console.log("Night: "+$scope.iteration);
+            //end
+          },600)
+        },600)
+      }
+    }
   
   
   
@@ -608,7 +694,10 @@ app.controller('werewolf_ctrl', function($scope) {
   
   /////////// game logic (start with night) ///////////
   $scope.start = function() {
-    console.log("Game start");
+    //new_add
+    if ($scope.iteration == 1){
+      console.log("Game start");
+    }
 //    console.log($("#ann1").show());
 //    $("#main_container").fadeOut(400); 
 
@@ -618,6 +707,9 @@ app.controller('werewolf_ctrl', function($scope) {
 			if($scope.winningCondition == true){
 				//show winner
 				console.log("Winning condition fit");
+        //new_add_switched location
+        console.log($scope.winner);
+        //end
 				setTimeout(function(){
 					$("#winner").fadeIn(400);
 //          $("#reveal_identity").fadeIn(1000)
@@ -661,6 +753,8 @@ app.controller('werewolf_ctrl', function($scope) {
                           confirm_btn.innerHTML = "Confirm";
                           confirm_btn.setAttribute("id","kill");
                           confirm_btn.setAttribute("ng-click", "wolf_to_seer()") ;
+                          //new_add
+                          confirm_btn.setAttribute("style","text-align:center")
                           document.getElementById("vote").appendChild(confirm_btn);
                           setTimeout(function(){
                             compile(document.getElementById("kill"));
@@ -676,8 +770,6 @@ app.controller('werewolf_ctrl', function($scope) {
           } //end of else for winning condition not met, game continues
         }, 4000) //end of winning checking
       } //end of start()
-    
-
 	
 		
 });
