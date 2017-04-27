@@ -335,7 +335,7 @@ app.controller('werewolf_ctrl', function($scope) {
         //new_add
         for (var playerNumber=1; playerNumber<total_players+1; playerNumber++){
           if ($scope.iteration > 1 || $scope.day == true){
-            if($scope.status[playerNumber] == 0){
+            if($scope.status[playerNumber-1] == 0){
               // console.log("detected player "+playerNumber+" dead")
               $("#skull"+playerNumber).css("z-index",3);
             }
@@ -375,8 +375,9 @@ app.controller('werewolf_ctrl', function($scope) {
     // calcalate number of villagers (including gods) and wolves that are alive
     var wol_alive = 0;
     var tot_alive = 0;
-    for (var i=0; i<$scope.wolf.length; i++){
-      if ($scope.status[$scope.wolf[i]] == 1){
+    console.log($scope.status)
+    for (var i=0; i<$scope.num_werewolf; i++){
+      if ($scope.status[$scope.wolf[i]-1] == 1){
         wol_alive += 1
       }
     }
@@ -388,7 +389,7 @@ app.controller('werewolf_ctrl', function($scope) {
     var vil_alive = tot_alive-wol_alive;
 
     // wolf win
-    if (vil_alive == wol_alive){
+    if (vil_alive <= wol_alive){
       $scope.winningCondition = true;
       $scope.$apply(function(){
         $scope.winner = "WEREWOLVES"
@@ -418,12 +419,13 @@ app.controller('werewolf_ctrl', function($scope) {
       // fade out all wolf actions and transit to seer action
       $("#vote").fadeOut(600);
       setTimeout(function(){
-        var wolf_close = document.getElementById('bg3');
-        wolf_close.play();
         $("#char_close").fadeIn(400);
         setTimeout(function(){
-          $("#char_close").fadeOut(400);
-          wolf_close.pause();
+          var wolf_close = document.getElementById('bg3');
+          wolf_close.play();    
+          setTimeout(function(){
+            $("#char_close").fadeOut(400);
+            wolf_close.pause();
             setTimeout(function(){
               // update next character up
               $scope.$apply(function(){
@@ -461,8 +463,9 @@ app.controller('werewolf_ctrl', function($scope) {
                   },2000);
                 },2000);
               },800);
-          },600);
-        },3000);
+            },600);
+          },3000);
+        }, 800);
       },1000);
     }
   }
@@ -527,9 +530,10 @@ app.controller('werewolf_ctrl', function($scope) {
                         $("#char_open").fadeOut(400);
                         $("#witch1").fadeOut(400); 
                         $("#witch2").fadeOut(400);
-                        $scope.status[$scope.victim] = 0;
+                        $scope.status[$scope.victim-1] = 0;
                         witch_open.pause();
                         setTimeout(function(){
+                          $("#CharOpen").fadeOut('fast');
                           $("#witch_actions").fadeIn(400);
                         }, 600)
                       },1300);
@@ -552,16 +556,18 @@ app.controller('werewolf_ctrl', function($scope) {
     if ($scope.witchState == 1){    
       if ($scope.med == 1){
         if ($scope.victim != 0){
-          $scope.status[$scope.victim] = 1;
+          $scope.status[$scope.victim-1] = 1;
           $scope.victim = 0;
           $scope.med = 0;
           console.log("victim is saved by witch")
           $scope.nothing();
         }
         else{
+          $("#CharOpen").fadeOut('fast');
           $("#warn3").fadeIn(400)
           setTimeout(function(){
             $("#warn3").fadeOut(400)
+            $("#CharOpen").fadeOut('fast');
             setTimeout(function(){
               $("#witch_actions").fadeIn(600)
             }, 500)
@@ -569,9 +575,11 @@ app.controller('werewolf_ctrl', function($scope) {
         }
       }
       else{
+        $("#CharOpen").fadeIn('fast');
         $("#warn").fadeIn(400)
         setTimeout(function(){
           $("#warn").fadeOut(400)
+          $("#CharOpen").fadeOut('fast');
           setTimeout(function(){
             $("#witch_actions").fadeIn(600)
           }, 500)
@@ -579,9 +587,11 @@ app.controller('werewolf_ctrl', function($scope) {
       }
     }
     else{
+        $("#CharOpen").fadeIn('fast');
         $("#warn2").fadeIn(400)
         setTimeout(function(){
           $("#warn2").fadeOut(400)
+          $("#CharOpen").fadeOut('fast');
           setTimeout(function(){
             $("#witch_actions").fadeIn(600)
           }, 500)
@@ -623,9 +633,11 @@ app.controller('werewolf_ctrl', function($scope) {
         }
       }
       else{
+        $("#CharOpen").fadeIn('fast');
         $("#warn2").fadeIn(400)
         setTimeout(function(){
           $("#warn2").fadeOut(400)
+          $("#CharOpen").fadeOut('fast');
           setTimeout(function(){
             $("#witch_actions").fadeIn(600)
           }, 500)
@@ -650,7 +662,7 @@ app.controller('werewolf_ctrl', function($scope) {
   $scope.nothing = function(){
     $("#vote").fadeOut(400);
     $("#witch_actions").fadeOut(400);	
-      
+    $("#CharOpen").fadeIn('fast');
     setTimeout(function(){
       var witch_close = document.getElementById('bg5');
       witch_close.play();
@@ -662,6 +674,7 @@ app.controller('werewolf_ctrl', function($scope) {
         //day sequence
         var all_open = document.getElementById('bg8');
         all_open.play();
+        $("#CharOpen").fadeOut('fast');
         $("#night_alt").fadeOut(400);
         setTimeout(function(){
           $("#morning_alt").fadeIn('fast');
@@ -706,25 +719,25 @@ app.controller('werewolf_ctrl', function($scope) {
         if ($scope.witchNum == $scope.victim){
           $scope.witchState = 0;
         }
-        $scope.victim = 0;
       }
       if($scope.po_victim != 0){
         $("#poisoned").fadeIn(400);
-        $scope.status[$scope.po_victim] = 0;
+        $scope.status[$scope.po_victim-1] = 0;
         if ($scope.witchNum == $scope.po_victim){
           $scope.witchState = 0;
         }
-        $scope.po_victim = 0
       }
       else if($scope.victim == 0 && $scope.po_victim == 0){
         $("#safe_night").fadeIn(400);
       }
+      $scope.victim = 0;
+      $scope.po_victim = 0;
       setTimeout(function(){
         $("#fat").fadeOut(400)
         $("#vic").fadeOut(400);
         $("#poisoned").fadeOut(400);
         $("#safe_night").fadeOut(400);
-        if ($scope.huntNum != 0 && $scope.status[$scope.huntNum] == 0 && $scope.huntState == 1){
+        if ($scope.huntNum != 0 && $scope.status[$scope.huntNum-1] == 0 && $scope.huntState == 1){
           setTimeout(function(){
             $("#hunter_actions").fadeIn(400);
             $scope.huntState = 0;
@@ -741,7 +754,7 @@ app.controller('werewolf_ctrl', function($scope) {
   //Vote suspect function, related to discuss function
   $scope.vote_suspect = function(){
     $scope.disc = 1;
-    $scope.status[$scope.target] = 0;
+    $scope.status[$scope.target-1] = 0;
     console.log("suspect killed by voting")
     console.log($scope.target)
     setTimeout(function(){
@@ -768,7 +781,7 @@ app.controller('werewolf_ctrl', function($scope) {
   
   //Hunter kill function, related to hunterAction function
   $scope.hunter_kill = function(){
-    $scope.status[$scope.target] = 0;
+    $scope.status[$scope.target-1] = 0;
     if ($scope.witchNum == $scope.target){
       $scope.witchState = 0;
     }
@@ -842,48 +855,55 @@ app.controller('werewolf_ctrl', function($scope) {
         })
         //new_add
         $scope.day = false;
-        var all_close = document.getElementById('bg1');
-        all_close.play();
+        $scope.victim = 0;
+        $scope.target = 0;
         setTimeout(function(){
           $("#night_alt").fadeIn('fast'); //start night
-          $("#night_seq").fadeIn('slow');
+          $("#night_seq").fadeIn('fast');
           console.log("night_alt fade");
           setTimeout(function(){
-            $("#night_seq").fadeOut(700);
-            all_close.pause();
+            var all_close = document.getElementById('bg1');
+            all_close.play();
             setTimeout(function(){
-              var wolf_open = document.getElementById('bg2');
-              wolf_open.play();          
-              $("#char_open").fadeIn(400); //start werewolf
+              $("#night_seq").fadeOut(700);
+              all_close.pause();
+              $("#CharOpen").fadeIn('fast');
               setTimeout(function(){
-                $("#wolf1").fadeIn(400); //que werewolf dialogue
-                setTimeout(function(){
-                  $("#wolf2").fadeIn(400); //que werewolf dialogue
+                  $("#char_open").fadeIn(400); //start werewolf
                   setTimeout(function(){
-                    $("#char_open").fadeOut(400);
-                    $("#wolf1").fadeOut(400); 
-                    $("#wolf2").fadeOut(400);
-                    wolf_open.pause();
+                    var wolf_open = document.getElementById('bg2');
+                    wolf_open.play();
                     setTimeout(function(){
-                      $scope.createVote();
-                      var confirm_btn = document.createElement("div");
-                      confirm_btn.setAttribute("class","front_btn");
-                      confirm_btn.innerHTML = "Confirm";
-                      confirm_btn.setAttribute("id","kill");
-                      confirm_btn.setAttribute("ng-click", "wolf_to_seer()") ;
-                      confirm_btn.setAttribute("style","text-align:center")
-                      document.getElementById("vote").appendChild(confirm_btn);
+                      $("#wolf1").fadeIn(400); //que werewolf dialogue
                       setTimeout(function(){
-                        compile(document.getElementById("kill"));
-                      }, 500)
-                      $("#vote").fadeIn(400);
-                    },1300);
-                  },700);
-                },2000);
-              },2400);
-            },2000); //night_alt close
-          },2000); //time after what night_seq disappear
-        },2000);	
+                        $("#wolf2").fadeIn(400); //que werewolf dialogue
+                        setTimeout(function(){
+                          $("#char_open").fadeOut(400);
+                          $("#wolf1").fadeOut(400); 
+                          $("#wolf2").fadeOut(400);
+                          wolf_open.pause();
+                          setTimeout(function(){
+                            $scope.createVote();
+                            var confirm_btn = document.createElement("div");
+                            confirm_btn.setAttribute("class","front_btn");
+                            confirm_btn.innerHTML = "Confirm";
+                            confirm_btn.setAttribute("id","kill");
+                            confirm_btn.setAttribute("ng-click", "wolf_to_seer()") ;
+                            confirm_btn.setAttribute("style","text-align:center")
+                            document.getElementById("vote").appendChild(confirm_btn);
+                            setTimeout(function(){
+                              compile(document.getElementById("kill"));
+                            }, 500)
+                            $("#vote").fadeIn(400);
+                          },1300);
+                        },700);
+                      },2000);
+                    },2800);
+                  }, 800);
+              },2000); //night_alt close
+            },4000); //time after what night_seq disappear
+          }, 800);
+        },500);	
       } //end of else for winning condition not met, game continues
     }, 4000) //end of winning checking
   } //end of start()

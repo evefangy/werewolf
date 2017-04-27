@@ -4,17 +4,17 @@
 <div id="vote" hidden="true"></div>
 
 <!--Night Alternation-->
-<div id="night_alt" hidden = "true">
+<div id="night_alt" hidden = "true" style>
   <center>
 
     <div class="center" id="night_seq" hidden = "true">
-        IT IS NIGHT TIME. <br>EVERYONE CLOSE YOUR EYES
+        <font style="font-size:25px;color: #282c37;">It is night time. <br>Everyone close your eyes</font>
         <audio id="bg1" src="audio/all_close.mp3" preload="none"></audio>
     </div>
 
-    <div class="center" ng-model="charType">
-      <font hidden="true" id="char_open">{{charType[curr_char].toUpperCase()}}, OPEN YOUR EYES. <br></font>
-      <font hidden="true" id="char_close">{{charType[curr_char].toUpperCase()}}, CLOSE YOUR EYES. <br></font>
+    <div class="center" id="CharOpen" ng-model="charType" hidden = true>
+      <font hidden="true" id="char_open" style="font-size:25px;color: #282c37;">{{charType[curr_char]}}, open your eyes. <br></font>
+      <font hidden="true" id="char_close" style="font-size:25px;color: #282c37;">{{charType[curr_char]}}, close your eyes. <br></font>
       <audio id="bg2" src="audio/wolf_open.mp3" preload="none"></audio>
       <audio id="bg3" src="audio/wolf_close.mp3" preload="none"></audio>
       <audio id="bg4" src="audio/witch_open.mp3" preload="none"></audio>
@@ -24,36 +24,36 @@
     </div>
     
       <!--			Wolf			-->
-      <div hidden="true" id="wolf1" class="dialogue">CHOOSE ONE TARGET</div>
-      <div hidden="true" id="wolf2" class="dialogue">VOTE TO KILL</div>
+      <div hidden="true" id="wolf1" class="dialogue"><font style="font-size:25px;color: #282c37;">Choose one target</font></div>
+      <div hidden="true" id="wolf2" class="dialogue"><font style="font-size:25px;color: #282c37;">Vote to kill</font></div>
 <!--      <div hidden="true" id="wolf3">CHOOSE A VICTIM</div>-->
 
       <!--			Seer			-->
-      <div hidden="true" id="seer1" class="dialogue">CHOOSE ONE SUSPECT</div>
-      <div hidden="true" id="seer2" class="dialogue">VOTE TO TEST</div>
-      <div hidden="true" id="seer3">FIND A SUSPECT</div>
-			<div hidden="true" id="seer_y">YES, YOU FOUND THE WEREWOLF!</div>
-			<div hidden="true" id="seer_n">TOO BAD. THIS PERSON IS INNOCENT.</div>
+      <div hidden="true" id="seer1" class="dialogue"><font style="font-size:25px;color: #282c37;">Choose one suspect</font></div>
+      <div hidden="true" id="seer2" class="dialogue"><font style="font-size:25px;color: #282c37;">Vote to test</font></div>
+      <div hidden="true" id="seer3"><font style="font-size:25px;color: #282c37;">Find a suspect</font></div>
+      <div hidden="true" id="seer_y"><font style="font-size:25px;color: #282c37;">Yes, you found the werewolf!</font></div>
+      <div hidden="true" id="seer_n"><font style="font-size:25px;color: #282c37;">Too bad. This person is innocent.</font></div>
 			
       <!--			Witch			-->
-      <div hidden="true" id="witch1" class="dialogue">DECIDE ON AN ACTION</div>
-      <div hidden="true" id="witch2" class="dialogue">TAKE AN ACTION</div>
-      <div hidden="true" id="witch3">CHOOSE AN ACTION</div>
-		  <center><div id="warn" hidden="true">YOU DON'T HAVE THIS POTION LEFT</div></center>
-          <center><div id="warn2" hidden="true">YOU ARE DEAD! CANNOT USE ANY POTION</div></center>
-          <center><div id="warn3" hidden="true">NOBODY HURT! NO NEED TO USE SAVING POTION</div></center>
+      <div hidden="true" id="witch1" class="dialogue"><font style="font-size:25px;color: #282c37;">Decide on an action</font></div>
+      <div hidden="true" id="witch2" class="dialogue"><font style="font-size:25px;color: #282c37;">Take an action</font></div>
+      <div hidden="true" id="witch3"><font style="font-size:25px;color: #282c37;">Choose an action</font></div>
+      <center><div id="warn" hidden="true"><font style="font-size:25px;color: #282c37;">You don't have this potion left</font></div></center>
+      <center><div id="warn2" hidden="true"><font style="font-size:25px;color: #282c37;">You are dead! Cannot use any potion</font></div></center>
+      <center><div id="warn3" hidden="true"><font style="font-size:25px;color: #282c37;">Nobody hurt! No need to use saving potion</font></div></center>
     
-      <div hidden="true" id="witch_actions">    
-        <h3>PLAYER {{victim}} WAS HURT LAST NIGHT. MAKE YOUR DECISION.</h3>
+<!--      <div hidden="true" id="vote"></div>-->
+  </center>	
+
+    <div hidden="true" id="witch_actions">  
+        <center>
+          <h3><font style="font-size:25px;color: #282c37;">Player {{victim}} was hurt last night. Make your decision.</font></h3>
         <a><div class="play" ng-click="save()">Save</div></a>
         <a><div class="play" ng-click="poison_someone()">Poison</div></a>
         <a><div class="play" ng-click="nothing()">Do Nothing</div></a>
-		  </div>	
-
-    
-<!--      <div hidden="true" id="vote"></div>-->
-
-  </center>	
+        </center>
+      </div>	
 </div>
 
 
@@ -61,34 +61,38 @@
 <div id="morning_alt" hidden="true">
 	<center>
     <div class="center" id="morning_seq" hidden = "ture" >
-        IT IS MORNING. <br>EVERYONE OPEN YOUR EYES
+        <font style="font-size:25px;color: #282c37;">It is morning <br>Everyone open your eyes</font>
         <audio id="bg8" src="audio/all_open.mp3" preload="none"></audio>
     </div>
 
-    <div hidden="true" id="announce_victim">
-          <div id = "fat" hidden = "true"><h3>{{fat}} </h3></div>
+    <center><div hidden="true" id="announce_victim">
+        <div id = "fat" hidden = "true"><h3><font style="font-size:25px;color: #282c37;">{{fat}}<br> </font></h3></div>
 <!--          <h3>SOMEONE WAS FOUND DEAD LAST NIGHT</h3>-->
           <div id = "show_victim" class="front_btn" ng-click="show_vic()" hidden = true>TAP TO SEE WHO</div>
-          <h2><div id="vic" hidden="true">Player {{victim}} </div></h2>
-          <h2><div id="poisoned" hidden="true">Player {{po_victim}} </div></h2>
-          <h2><div id="safe_night" hidden="true">JUST KIDDING! NOBODY WAS HURT...FOR NOW </div></h2>
+        <h2><div id="vic" hidden="true"><font style="font-size:20px;color: #282c37;">Player {{victim}}</font></div></h2>
+        <h2><div id="poisoned" hidden="true"><font style="font-size:20px;color: #282c37;">Player {{po_victim}}</font></div></h2>
+        <h2><div id="safe_night" hidden="true"><font style="font-size:20px;color: #282c37;">Just kidding! Nobody was hurt ... just for now</font></div></h2>
 
-    </div>
+        </div>
     
     <div hidden="true" id="hunter_actions">  
-        <h3>HUNTER, YOU WERE KILLED! PLEASE MAKE YOUR DECISION.</h3>
+        <h3><font style="font-size:25px;color: #282c37;">Hunter, you were killed! Please make your decision.</font></h3>
         <a><div class="play" ng-click="hunterAction()">I want to shoot</div></a>
         <a><div class="play" ng-click="hunterNoAction()">No need, just let me die</div></a>
-		  </div>	
+		  </div></center>
 
 
     <div style="display: none" id="discuss" class = "center">
-      PLEASE DISCUSS AND HELP EACH OTHER FIND THE SUSPECT.
+    <font style="font-size:25px;color: #282c37;">
+      Please discuss and help each other find the suspect.
+    </font>
     </div>
 
 
     <div style="display: none" id="winner" ng-model="winner" class = "center">
-           {{winner}} WIN!
+        <font style="font-size:25px;color: #282c37;">   
+        {{winner}} WIN!
+        </font>
     </div>
 	</center>
 </div>

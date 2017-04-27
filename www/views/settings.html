@@ -1,24 +1,24 @@
 <div id="second_container" hidden="true">
-  <div id="back_menu"><a href="#/"><span class="glyphicon glyphicon-menu-left" style="margin-top:5px;margin-left:20px;float:left;color:white;" ng-click="back()"></span></a><text style="width:100%;">Player Setting</text></div>
+  <div id="back_menu"><a href="#/"><span class="glyphicon glyphicon-menu-left" style="margin-top:5px;margin-left:20px;float:left;color:#d9e1e8;" ng-click="back()"></span></a><text style="width:100%;color:#d9e1e8;">Player Setting</text><span class="glyphicon glyphicon-menu-right" style="margin-top:5px;margin-right:20px;float:right;color:#282c37;"></span></div>
 
   <div class="box_row">
     <center>
-      <div class="box">Villagers<br><font style="font-size:40px;" ng-model="num_villagers">{{num_villagers}}</font></div>
-      <div class="box">Werewolf<br><font style="font-size:40px;" ng-model="num_werewolf">{{num_werewolf}}</font></div>
+        <div class="box" style = "width:120px;height:120px"><font style="font-size:20px;">Villagers<br></font><font style="font-size:40px;" ng-model="num_villagers">{{num_villagers}}</font></div>
+      <div class="box" style = "width:120px;height:120px"><font style="font-size:20px;">Werewolf<br></font><font style="font-size:40px;" ng-model="num_werewolf">{{num_werewolf}}</font></div>
     </center>
   </div>
 
   <div class="box_row">
     <center>
-      <div class="box add" ng-click="increaseV()">+</div>
-      <div class="box add" ng-click="increaseW()">+</div>
+      <div class="box add" ng-click="increaseV()" style = "background-color: #9baec8; -moz-border-radius: 50px; -webkit-border-radius: 50px; border-radius: 50px">+</div>
+      <div class="box add" ng-click="increaseW()" style = "background-color: #9baec8; -moz-border-radius: 50px; -webkit-border-radius: 50px; border-radius: 50px">+</div>
     </center>
   </div>
 
   <div class="box_row">
     <center>
-      <div class="box minus" ng-click="decreaseV()">-</div>
-      <div class="box minus" ng-click="decreaseW()">-</div>
+      <div class="box minus" ng-click="decreaseV()" style = "background-color: #9baec8; -moz-border-radius: 50px; -webkit-border-radius: 50px; border-radius: 50px">-</div>
+      <div class="box minus" ng-click="decreaseW()" style = "background-color: #9baec8; -moz-border-radius: 50px; -webkit-border-radius: 50px; border-radius: 50px">-</div>
     </center>
   </div>
 
